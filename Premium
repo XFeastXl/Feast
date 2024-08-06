@@ -51,7 +51,7 @@ mko.BackgroundTransparency = 0.5
 pqr.Font = Enum.Font.SourceSans
 pqr.FontSize = Enum.FontSize.Size18
 pqr.TextColor3 = Color3.new(1, 1, 1)
-pqr.Text = "Join our Discord: https://discord.com/invite/your-discord-link"
+pqr.Text = "Join our Discord: https://discord.gg/JBX4G8tqTD"
 pqr.Size = UDim2.new(0, 200, 0, 20)
 pqr.Position = UDim2.new(0, 100, 0, 140)
 pqr.BackgroundColor3 = Color3.new(1, 1, 1)
@@ -88,7 +88,7 @@ local function hij()
     if vbn.Text == "" or vbn.Text == bcd then
         if vbn.Text == bcd then
             qiu:Destroy()
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/XFeastXl/Testi/main/blablablatest"))()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/XFeastXl/AWODIHAWJIROH4-WR-JIAdiawhio/main/dWODHiwoaeDH8234y(HI*%40YH(*%24%40YFcsauidAWEYH(PEQE)!(EHDO%3APp%5Bdoawpdjjnsa"))()
         else
             print("Please enter a code!")
         end
